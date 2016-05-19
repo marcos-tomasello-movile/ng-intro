@@ -3,10 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Angular</title>
+    <title>Data Binding</title>
 </head>
 <body>
-    <h2>Welcome to Angular  {{2000 + 16}}</h2>
+    <h1>Data Binding in Angular</h1>
+
+    <input type="text" ng-model="name" placeholder="Enter your name">
+
+    <h1>Hello <span ng-bind="name"></span></h1>
+    <!--h1>Hello <span>{{name}}</span></h1-->
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
 </body>
 </html>
