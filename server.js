@@ -6,8 +6,8 @@ const app = express();
 
 app.use('/public',  express.static(__dirname + '/frontend/static')); //used for statics. Images, css, etc
 
-app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname + '/frontend/app/1-hello/hello.html'));
+app.get('/setup', function(req, res) {
+    res.sendFile(path.join(__dirname + '/frontend/app/1-setup/setup.html'));
 });
 
 app.get('/ping', function(req, res) {
