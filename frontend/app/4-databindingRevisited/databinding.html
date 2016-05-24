@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="exampleModule">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Data Binding Revisited</title>
+</head>
+<body ng-controller="MainController as main">
+    <h1>Data Binding Revisited</h1>
+
+    <h2>Dejanos tu comentario!!</h2>
+
+    <form id="comments" ng-submit="main.addCommment(main.newComment)">
+        <textarea type="text" rows= "5" placeholder="Cont&aacute; tu an&eacute;cdota ac&aacute;" ng-model="main.newComment" required>
+        </textarea>
+        <button form="comments" type="submit">Post</button>
+    </form>
+
+    <div ng-repeat="comment in main.comments">
+        <p>Some User says: <span style="font-style:italic">"{{comment}}"</span></p>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="app/4-databindingRevisited/databinding.js"></script>
+</body>
+</html>

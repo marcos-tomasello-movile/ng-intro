@@ -21,6 +21,11 @@ app.get('/controllers', function(req, res) {
     res.sendFile(path.join(__dirname + '/frontend/app/3-controllers/controllers.html'));
 });
 
+// 3 - Databinding Revisited
+app.get('/data2', function(req, res) {
+    res.sendFile(path.join(__dirname + '/frontend/app/4-databindingRevisited/databinding.html'));
+});
+
 app.get('/ping', function(req, res) {
     res.status(200).json('pong');
 });
