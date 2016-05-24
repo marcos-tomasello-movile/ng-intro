@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="exampleModule">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Data Binding</title>
+</head>
+<body ng-controller="RegisterController as reg">
+    <h1>Controllers in Angular</h1>
+
+    <form id="register" ng-submit="reg.register()">
+        <div>
+            <input type="text" placeholder="Usuario" ng-model="reg.newUser.username" required />
+        </div>
+        <br>
+        <div>
+            <input type="password" minlength="4" placeholder="Contrase&ntilde;a" ng-model="reg.newUser.password" required />
+        </div>
+        <br>
+        <div>
+            <input type="email" placeholder="Tu Email" ng-model="reg.newUser.email" required />
+        </div>
+        <br>
+        <div>
+            <button form="register" type="submit">Registrar</button>
+        </div>
+    </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="app/3-controllers/controllers.js"></script>
+</body>
+</html>

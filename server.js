@@ -4,14 +4,21 @@ const path = require('path');
 
 const app = express();
 
-app.use('/public',  express.static(__dirname + '/frontend/static')); //used for statics. Images, css, etc
+app.use(express.static(__dirname + '/frontend')); //used for statics. Images, css, etc
 
+// 1 - Setup
 app.get('/setup', function(req, res) {
     res.sendFile(path.join(__dirname + '/frontend/app/1-setup/setup.html'));
 });
 
+// 2 - Databinding
 app.get('/data', function(req, res) {
     res.sendFile(path.join(__dirname + '/frontend/app/2-databinding/databinding.html'));
+});
+
+// 3 - Controllers
+app.get('/controllers', function(req, res) {
+    res.sendFile(path.join(__dirname + '/frontend/app/3-controllers/controllers.html'));
 });
 
 app.get('/ping', function(req, res) {
