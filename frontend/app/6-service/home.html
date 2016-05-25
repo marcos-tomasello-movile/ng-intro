@@ -1,10 +1,15 @@
 <div ng-controller="HomeController as home">
-    <div ng-repeat="(id, game) in home.gamesList" ng-click="homeCtr.goDetails(id)">
-            <img ng-src="http://movilesc.com/gameon/public/images/games/{{id}}/profile.png" ng-click="homeCtr.goDetails(id)">
-        <div>
-            <h3>{{game.name}}</h3>
-            <button type="button" ng-click="home.goDetails(id)">DETALLES</button>
+    </br></br></br>
+    <div class="section group no-top">
+        <div ng-repeat="(id, game) in home.gamesList" ng-click="homeCtr.goDetails(id)" class="col span_1_of_2">
+            <div class="img-content">
+                <img ng-src="http://movilesc.com/gameon/public/images/games/{{id}}/profile.png" ng-click="homeCtr.goDetails(id)">
+            </div>
+            <div class="info-content">
+                <h3>{{game.name}}</h3>
+                <button type="button" ng-click="home.goDetails(id)">DETALLES</button>
+            </div>
+            </br></br></br>
         </div>
-        </br></br></br>
     </div>
 </div>

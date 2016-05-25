@@ -4,7 +4,8 @@ const path = require('path');
 
 const app = express();
 
-app.use(express.static(__dirname + '/frontend')); //used for statics. Images, css, etc
+app.use(express.static(__dirname + '/frontend'));
+app.use('/public',  express.static(__dirname + '/public')); //used for statics. Images, css, etc
 
 // 1 - Setup
 app.get('/setup', function(req, res) {
