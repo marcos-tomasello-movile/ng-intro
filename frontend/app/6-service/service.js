@@ -6,7 +6,7 @@ angular.module('exampleModule', ['ngRoute'])
         $routeProvider.when('/', {
                 templateUrl: 'app/6-service/home.html'
             })
-            .when('/details', {
+            .when('/details/:id', {
                 templateUrl: 'app/6-service/details.html'
             })
             .otherwise({redirectTo: '/'});
@@ -25,14 +25,19 @@ angular.module('exampleModule', ['ngRoute'])
             alert("Ha ocurrido un error: " + JSON.stringify(errResponse, null, 4));
         });
 
-        self.goDetails = function() {
-            $location.path("/details");
+        self.goDetails = function(id) {
+            $location.path("/details/" + id);
         }
     }])
-    .controller('DetailsController', ['$location', function($location) {
+    .controller('DetailsController', ['$location', '$routeParams', 'GamesService',
+                                function($location, $routeParams, GamesService) {
         var self = this;
 
-        self.instDate = new Date().toISOString();
+        GamesService.game($routeParams.id, function(game) {
+            self.game = game;
+        }, function(errResponse) {
+            alert("Ha ocurrido un error: " + JSON.stringify(errResponse, null, 4));
+        });
 
         self.goHome = function() {
             $location.path("/");
@@ -52,6 +57,18 @@ angular.module('exampleModule', ['ngRoute'])
                         onSuccess(gamesListCache);
                     }, function(errResponse){
                         onError(errResponse.data);
+                    });
+                }
+            };
+
+            self.game = function(id, onSuccess, onError) {
+                if(gamesListCache) {
+                    onSuccess(gamesListCache[id]);
+                } else {
+                    self.games(function(list){
+                        onSuccess(list[id]);
+                    }, function(errResponse){
+                        onError(errResponse);
                     });
                 }
             };
