@@ -35,6 +35,7 @@ angular.module('exampleModule', ['ngRoute'])
 
         GamesService.game($routeParams.id, function(game) {
             self.game = game;
+            self.game.id = $routeParams.id;
         }, function(errResponse) {
             alert("Ha ocurrido un error: " + JSON.stringify(errResponse, null, 4));
         });

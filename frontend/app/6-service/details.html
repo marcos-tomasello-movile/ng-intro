@@ -1,5 +1,15 @@
-<div ng-controller="DetailsController as details">
-    <h2>This is the Details view with controller created at: {{details.instDate}}</h2>
-
-    <button type="button" ng-click="details.goHome()">Go Home</button>
+<div id="details-view" ng-controller="DetailsController as details">
+    <div id="short-desc" class="span_2_of_2 no-float">
+        <div class="detail-img-content">
+            <img ng-src="http://movilesc.com/gameon/public/images/games/{{details.game.id}}/detail.png">
+        </div>
+        <div class="detail-info-content">
+            <h3>{{details.game.name}}</h3>
+            <button type="button" class="btn_small wide">JUGAR</button>
+        </div>
+    </div>
+    <div id="description-info" class="no-top">
+        <h2 class="description">{{details.game.title}}</h2>
+        <p class="description-text">{{details.game.description}}</p>
+    </div>
 </div>
