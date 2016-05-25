@@ -26,9 +26,14 @@ app.get('/data2', function(req, res) {
     res.sendFile(path.join(__dirname + '/frontend/app/4-databindingRevisited/databinding.html'));
 });
 
-// 5 - Databinding Revisited
+// 5 - Routing
 app.get('/routing', function(req, res) {
     res.sendFile(path.join(__dirname + '/frontend/app/5-routing/routing.html'));
+});
+
+// 6 - Service
+app.get('/service', function(req, res) {
+    res.sendFile(path.join(__dirname + '/frontend/app/6-service/service.html'));
 });
 
 app.get('/ping', function(req, res) {
