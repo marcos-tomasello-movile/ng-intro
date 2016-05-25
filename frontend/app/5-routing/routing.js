@@ -1,13 +1,13 @@
 /**
  * Created by Marcos Tomasello on 24/05/2016.
  */
-angular.module('exampleModule', [])
+angular.module('exampleModule', ['ngRoute'])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/', {
-                templateUrl: '5-routing/home.html'
+                templateUrl: 'app/5-routing/home.html'
             })
-            .when('/details/:id', {
-                templateUrl: '5-routing/details.html'
+            .when('/details', {
+                templateUrl: 'app/5-routing/details.html'
             })
             .otherwise({redirectTo: '/'});
     }])
@@ -15,4 +15,22 @@ angular.module('exampleModule', [])
         var self = this;
 
         self.instDate = new Date().toISOString();
+    }])
+    .controller('HomeController', ['$location', function($location) {
+        var self = this;
+
+        self.instDate = new Date().toISOString();
+
+        self.goDetails = function() {
+            $location.path("/details");
+        }
+    }])
+    .controller('DetailsController', ['$location', function($location) {
+        var self = this;
+
+        self.instDate = new Date().toISOString();
+
+        self.goHome = function() {
+            $location.path("/");
+        }
     }]);
