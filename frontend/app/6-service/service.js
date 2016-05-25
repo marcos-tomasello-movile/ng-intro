@@ -16,10 +16,14 @@ angular.module('exampleModule', ['ngRoute'])
 
         self.instDate = new Date().toISOString();
     }])
-    .controller('HomeController', ['$location', function($location) {
+    .controller('HomeController', ['$location', 'GamesService', function($location, GamesService) {
         var self = this;
 
-        self.instDate = new Date().toISOString();
+        GamesService.games(function(games){
+            self.gamesList = games;
+        }, function(errResponse) {
+            alert("Ha ocurrido un error: " + JSON.stringify(errResponse, null, 4));
+        });
 
         self.goDetails = function() {
             $location.path("/details");
@@ -38,12 +42,12 @@ angular.module('exampleModule', ['ngRoute'])
             var self = this;
             var gamesListCache;
 
-            self.getGames = function(onSuccess, onError) {
+            self.games = function(onSuccess, onError) {
                 if(gamesListCache) {
                     onSuccess(gamesListCache);
                 } else {
                     console.log('Fetching from server');
-                    $http.get('http://movilesc.com/api/games').then(function(response){
+                    $http.get('http://localhost:3212/api/games').then(function(response){
                         gamesListCache = response.data.games;
                         onSuccess(gamesListCache);
                     }, function(errResponse){
